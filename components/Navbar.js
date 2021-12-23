@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import React, { useState } from 'react';
+import LogoSVG from '../public/assets/images/main-logo-color.svg'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +11,8 @@ export default function Navbar() {
                     <nav className="relative">
                         <div className="flex justify-between items-center">
                             <a className="text-lg font-medium" href="#">
-                                <img className="h-7" src="" alt="" width="auto" />
+                                {/* <img className="h-7" src="" alt="" width="auto" /> */}
+                                <Image className="h-7" src={LogoSVG} alt="" width={120} height={30} />
                             </a>
                             <div className="lg:hidden">
                                 <button onClick={() => setIsOpen(!isOpen)} className="navbar-burger flex items-center p-3 hover:bg-gray-50 rounded">
@@ -34,7 +37,7 @@ export default function Navbar() {
                     <nav className="relative flex flex-col py-6 px-6 w-full h-full bg-white border-r overflow-y-auto">
                         <div className="flex items-center mb-8">
                             <a className="mr-auto text-2xl font-medium leading-none" href="#">
-                                <img className="h-7" src="zeus-assets/logo/logo-zeus-red.svg" alt="" width="auto" />
+                                <Image className="h-7" src={LogoSVG} alt="" width={120} height={30} />
                             </a>
                             <button onClick={() => setIsOpen(false)} className="navbar-close">
                                 <svg className="h-6 w-6 text-gray-500 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
