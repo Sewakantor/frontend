@@ -4,11 +4,13 @@ import LogoSVG from '../public/assets/images/main-logo-color.svg'
 import userPicProfile from '../public/assets/images/user-profile.jpg'
 import { Popover } from '@headlessui/react'
 import { usePopper } from 'react-popper'
+import SearchOnNav from './SearchOnNav';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const Login = false;
+    const isLogin = false;
 
+    // Popper setup
     const [referenceElement, setReferenceElement] = useState()
     const [popperElement, setPopperElement] = useState()
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
@@ -22,7 +24,7 @@ export default function Navbar() {
                 <div className="container px-4 mx-auto">
                     <nav className="relative">
                         <div className="flex justify-between items-center">
-                            <a className="text-lg font-medium" href="/">
+                            <a className="text-lg font-medium pt-3" href="/">
                                 <Image className="h-7" src={LogoSVG} alt="" width={120} height={30} />
                             </a>
                             <div className="lg:hidden">
@@ -33,18 +35,15 @@ export default function Navbar() {
                                     </svg>
                                 </button>
                             </div>
-                            <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:w-auto lg:space-x-12">
-                                <li><a className="text-sm font-medium" href="#">About</a></li>
-                                <li><a className="text-sm font-medium" href="#">Company</a></li>
-                                <li><a className="text-sm font-medium" href="#">Services</a></li>
-                                <li><a className="text-sm font-medium" href="#">Testimonials</a></li>
-                            </ul>
-                            {Login ? (
-                                <div className="hidden lg:block">
-                                    <a className="inline-block mr-2 py-3 px-8 text-sm leading-normal rounded border font-medium" href="#">Log in</a>
-                                    <a className="inline-block py-3 px-8 text-sm text-white font-medium leading-normal bg-red-400 hover:bg-red-300 rounded transition duration-200" href="#">Sign Up</a>
-                                </div>
-                            ) : (
+                            
+                            <div className=" hidden absolute top-1/2 left-1/3 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:w-96 lg:space-x-18 ">
+                                {isLogin ? (
+                                    <SearchOnNav/>
+                                ) : (
+                                    null
+                                )}
+                            </div>
+                            {isLogin ? (
                                 <div className="hidden lg:block">
                                     <div className="grid grid-rows-2 grid-flow-col">
                                         <div className="col-span-2">
@@ -74,7 +73,7 @@ export default function Navbar() {
                                                             <div className="relative grid bg-white p-3 lg:grid-cols-2">
                                                                 <a className='text-sm font-medium' href='/'>Live Chat</a>
                                                             </div>
-                                                            <div className="relative grid bg-white p-3 lg:grid-cols-2 text-black bg-red-300 hover:bg-red-600 text-white">
+                                                            <div className="relative grid bg-white p-3 lg:grid-cols-2 text-black bg-red-400 hover:bg-red-300 text-white">
                                                                 <a className='text-sm font-medium' href='/'>Log Out</a>
                                                             </div>
                                                     </div>
@@ -83,7 +82,11 @@ export default function Navbar() {
                                         </div>
                                     </div>
                                 </div>
-                                // <h1>ABC</h1>
+                            ) : (
+                                <div className="hidden lg:block">
+                                    <a className="inline-block py-3 px-8 text-sm leading-normal font-normal" href="#">LOGIN</a>
+                                    <a className="inline-block py-2 px-5 text-sm text-white font-bold leading-normal bg-red-400 hover:bg-red-300 rounded-full transition duration-200" href="#">SIGN UP</a>
+                                </div>
                             )}
                         </div>
                     </nav>
@@ -101,21 +104,27 @@ export default function Navbar() {
                                 </svg>
                             </button>
                         </div>
-                        <div>
-                            <ul>
-                                <li className="mb-1"><a className="block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded" href="#">About</a></li>
-                                <li className="mb-1"><a className="block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded" href="#">Company</a></li>
-                                <li className="mb-1"><a className="block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded" href="#">Services</a></li>
-                                <li className="mb-1"><a className="block p-4 text-sm font-medium text-gray-900 hover:bg-gray-50 rounded" href="#">Testimonials</a></li>
-                            </ul>
+                        <div className=''>
+                            {isLogin ? (
+                                <SearchOnNav/>
+                            ) : (
+                                null
+                            )}
                         </div>
                         <div className="mt-auto">
-                            <div className="pt-6">
-                                <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" href="#">Log in</a>
-                                <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" href="#">Sign Up</a>
-                            </div>
+                            {isLogin ? (
+                                 <div className="pt-6">
+                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" href="#">Live Chat</a>
+                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" href="#">Log Out</a>
+                                </div>
+                            ) : (
+                                <div className="pt-6">
+                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" href="#">Log Out</a>
+                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" href="#">Sign Up</a>
+                                </div>
+                            )}
                             <p className="mt-6 mb-4 text-sm text-center text-gray-500">
-                                <span>© 2021 All rights reserved.</span>
+                                <span>© 2021 Sewakantor.</span>
                             </p>
                         </div>
                     </nav>
