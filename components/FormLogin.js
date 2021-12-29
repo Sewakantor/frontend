@@ -6,7 +6,7 @@ export default function FormLogin() {
     return (
         <section className="overflow-hidden">
             <div className="flex min-h-screen overflow-hidden">
-                <div className="relative flex-1 hidden w-0 overflow-hidden lg:block">
+                <div className="relative flex-1 hidden w-0 overflow-hidden md:block">
                     <Image 
                         layout='fill'
                         src={headerImage}
