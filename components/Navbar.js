@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
-import LogoSVG from '../public/assets/images/main-logo-color.svg'
-import userPicProfile from '../public/assets/images/user-profile.jpg'
-import { Popover } from '@headlessui/react'
-import { usePopper } from 'react-popper'
+import LogoSVG from '../public/assets/images/main-logo-color.svg';
+import userPicProfile from '../public/assets/images/user-profile.jpg';
+import { Popover } from '@headlessui/react';
+import { usePopper } from 'react-popper';
 import SearchOnNav from './SearchOnNav';
 
 export default function Navbar() {
