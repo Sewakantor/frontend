@@ -1,12 +1,9 @@
-import FormLogin from "../components/FormLogin";
+import Client from "../components/Client";
 
 export default function Home() {
   return (
     <>
-      <FormLogin/>
-      {/* <h1 className="text-3xl font-bold underline">
-        Home Page
-      </h1> */}
+      <Client />
     </>
   )
 }
