@@ -14,6 +14,7 @@ module.exports = {
       current: 'currentColor',
       transparent: 'transparent',
 
+      redLogo: '#F15C60',
       black: '#000',
       white: '#fff',
 

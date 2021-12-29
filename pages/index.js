@@ -1,13 +1,9 @@
-import Footer from "../components/Footer";
+import Testimoni from "../components/Testimoni";
 
 export default function Home() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
-        Home Page
-        
-      </h1>
-      <Footer/>
+    <Testimoni/>
     </>
   )
 }
