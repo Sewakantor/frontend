@@ -1,9 +1,12 @@
+import Testimoni from "../components/Testimoni";
+
 export default function Home() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">
+    <Testimoni/>
+      {/* <h1 className="text-3xl font-bold underline">
         Home Page
-      </h1>
+      </h1> */}
     </>
   )
 }
