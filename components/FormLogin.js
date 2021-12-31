@@ -13,26 +13,26 @@ export default function FormLogin() {
                         className="absolute inset-0 object-cover w-full h-full"    
                     />
                 </div>
-                <div className="flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+                <div className="flex flex-col justify-center flex-1 px-4 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-22">
                     <div className="w-full max-w-xl mx-auto lg:w-96">
                         <div className="flex flex-row">
                             <ArrowCircleLeftIcon className="h-8 w-8 text-redLogo"/>
                             <p className='pl-1 pt-[2.5px]'>Back</p>
                         </div>
-                        <div>
-                            <h2 className="mt-6 text-3xl font-bold text-neutral-600"> Sign in. </h2>
+                        <div> 
+                            <h2 className="mt-3 text-3xl font-bold text-neutral-600"> Sign in. </h2>
                         </div>
-                        <div className="mt-8">
-                            <div className="mt-6">
-                                <form action="#" method="POST" className="space-y-6">
+                        <div className="mt-5">
+                            <div className="">
+                                <form action="#" method="POST" className="space-y-4">
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium text-neutral-600"> Email address </label>
                                         <div className="mt-1">
                                             <input id="email" name="email" type="email" autoComplete="email" required placeholder="Your Email" className="
                                                 block
                                                 w-full
-                                                px-5
-                                                py-3
+                                                px-3
+                                                py-2
                                                 text-base text-neutral-600
                                                 placeholder-gray-400
                                                 transition
@@ -52,8 +52,8 @@ export default function FormLogin() {
                                             <input id="password" name="password" type="password" autoComplete="current-password" required placeholder="Your Password" className="
                                                 block
                                                 w-full
-                                                px-5
-                                                py-3
+                                                px-3
+                                                py-2
                                                 text-base text-neutral-600
                                                 placeholder-gray-400
                                                 transition
