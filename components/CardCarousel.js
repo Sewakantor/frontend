@@ -3,8 +3,9 @@ import dummyImage from '../public/assets/images/card-kantor-dummy-image.jpg'
 
 export default function CardCarousel() {
     return (
+        // lg:w-64 md:w-48 sm:w-24
         <div className="w-72 rounded overflow-hidden ">
-            <div className="h-48 max-w-full relative ">
+            <div className="h-48 max-w-full relative">
                 <Image 
                     layout="fill" 
                     src={dummyImage} 
