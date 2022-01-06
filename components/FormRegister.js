@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import headerImage from '../public/assets/images/header-image.jpg'
 import { ArrowCircleLeftIcon } from '@heroicons/react/outline'
+import Link from 'next/link'
 
 export default function FormRegister() {
     return (
@@ -15,10 +16,12 @@ export default function FormRegister() {
                 </div>
                 <div className="flex flex-col justify-center flex-1 px-4 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-22">
                     <div className="w-full max-w-xl mx-auto lg:w-96">
-                        <div className="flex flex-row">
-                            <ArrowCircleLeftIcon className="h-8 w-8 text-redLogo"/>
-                            <p className='pl-1 pt-[2.5px]'>Back</p>
-                        </div>
+                        <Link href="/">
+                            <button className="flex flex-row">
+                                <ArrowCircleLeftIcon className="h-8 w-8 text-redLogo"/>
+                                <p className='pl-1 pt-[2.5px]'>Back</p>
+                            </button>
+                        </Link>
                         <div>
                             <h2 className="mt-2 text-2xl font-bold text-neutral-600"> Register an account. </h2>
                         </div>
@@ -129,7 +132,7 @@ export default function FormRegister() {
                                         </div>
                                     </div>
                                     <div className="my-10 text-sm text-right">
-                                        <a href="#" className="font-normal text-redLogo"> have an account ? Sign in </a>
+                                        <p className="font-normal"> have an account ? <Link href='/login'><a className="text-redLogo">Sign In</a></Link></p>
                                     </div>
                                     <div>
                                         <button type="submit" className="
