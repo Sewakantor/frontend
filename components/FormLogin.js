@@ -10,8 +10,8 @@ export default function FormLogin() {
     const onSubmit = (data) => {
         console.log(data);
         Swal.fire(
-            'Good job!',
-            'You clicked the button!',
+            'Login Success!',
+            'Redirect to homepage..',
             'success'
         )
         reset();
@@ -49,10 +49,8 @@ export default function FormLogin() {
                                                 name="email" 
                                                 autoComplete="email" 
                                                 placeholder="Your Email"
-                                                className={
-                                                    (errors.email ? 'block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600' : 
-                                                    'block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none')
-                                                }
+                                                className={"block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
+                                                    (errors.email ? 'border border-red-600' : 'border border-transparent')}
                                                 {...register("email", {required: "Email dibutuhkan", pattern: /^\S+@\S+$/i})} 
                                             />
                                             {errors.email && errors.email.type === "required" && <p className="mt-1 text-red-600 text-xs font-medium">{errors.email.message}</p>}
@@ -68,10 +66,8 @@ export default function FormLogin() {
                                                 type="password" 
                                                 autoComplete="current-password" 
                                                 placeholder="Your Password" 
-                                                className= {
-                                                    (errors.password ? 'block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600' : 
-                                                    'block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none')
-                                                }
+                                                className={"block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
+                                                    (errors.passsword ? 'border border-red-600' : 'border border-transparent')}
                                                 {...register("password", {required: "Password dibutuhkan"})}
                                             />
                                             {errors.password && <p className="mt-1 text-red-600 text-xs font-medium">{errors.password.message}</p>}
