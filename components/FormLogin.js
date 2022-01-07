@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
 
 export default function FormLogin() {
+    
     const {register, handleSubmit, formState: {errors} , reset} = useForm();
     const onSubmit = (data) => {
         console.log(data);
