@@ -2,8 +2,22 @@ import Image from 'next/image'
 import headerImage from '../public/assets/images/header-image.jpg'
 import { ArrowCircleLeftIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import Swal from 'sweetalert2'
 
 export default function FormLogin() {
+    
+    const {register, handleSubmit, formState: {errors} , reset} = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+        Swal.fire(
+            'Login Success!',
+            'Redirect to homepage..',
+            'success'
+        )
+        reset();
+    }
+
     return (
         <section className="overflow-hidden">
             <div className="flex min-h-screen overflow-hidden">
@@ -27,48 +41,37 @@ export default function FormLogin() {
                         </div>
                         <div className="mt-5">
                             <div className="">
-                                <form action="#" method="POST" className="space-y-4">
+                                <form action="#" method="POST" className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                                 <div>
                                     <label htmlFor="email" className="block text-sm font-medium text-neutral-600"> Email address </label>
                                         <div className="mt-1">
-                                            <input id="email" name="email" type="email" autoComplete="email" required placeholder="Your Email" className="
-                                                block
-                                                w-full
-                                                px-3
-                                                py-2
-                                                text-base text-neutral-600
-                                                placeholder-gray-400
-                                                transition
-                                                duration-500
-                                                ease-in-out
-                                                transform
-                                                border border-transparent
-                                                rounded-lg
-                                                bg-[#EDEDED]
-                                                outline-none
-                                            " />
+                                            <input 
+                                                id="email" 
+                                                name="email" 
+                                                autoComplete="email" 
+                                                placeholder="Your Email"
+                                                className={"block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
+                                                    (errors.email ? 'border border-red-600' : 'border border-transparent')}
+                                                {...register("email", {required: "Email dibutuhkan", pattern: /^\S+@\S+$/i})} 
+                                            />
+                                            {errors.email && errors.email.type === "required" && <p className="mt-1 text-red-600 text-xs font-medium">{errors.email.message}</p>}
+                                            {errors.email && errors.email.type === "pattern" && <p className="mt-1 text-red-600 text-xs font-medium">Format email tidak valid</p>}
                                         </div>
                                       </div>
                                     <div className="space-y-1">
                                         <label htmlFor="password" className="block text-sm font-medium text-neutral-600"> Password </label>
                                         <div className="mt-1">
-                                            <input id="password" name="password" type="password" autoComplete="current-password" required placeholder="Your Password" className="
-                                                block
-                                                w-full
-                                                px-3
-                                                py-2
-                                                text-base text-neutral-600
-                                                placeholder-gray-400
-                                                transition
-                                                duration-500
-                                                ease-in-out
-                                                transform
-                                                border border-transparent
-                                                rounded-lg
-                                                bg-[#EDEDED]
-                                                outline-none
-                                                "
+                                            <input 
+                                                id="password" 
+                                                name="password" 
+                                                type="password" 
+                                                autoComplete="current-password" 
+                                                placeholder="Your Password" 
+                                                className={"block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
+                                                    (errors.passsword ? 'border border-red-600' : 'border border-transparent')}
+                                                {...register("password", {required: "Password dibutuhkan"})}
                                             />
+                                            {errors.password && <p className="mt-1 text-red-600 text-xs font-medium">{errors.password.message}</p>}
                                         </div>
                                     </div>
                                     <div className="text-sm text-right">
@@ -95,8 +98,8 @@ export default function FormLogin() {
                                         focus:outline-none
                                         focus:ring-2
                                         focus:ring-offset-2
-                                        focus:ring-blue-500
-                                        "> Sign in </button>
+                                        focus:ring-blue-500"
+                                        > Sign in </button>
                                     </div>
                                 </form>
                             </div>
