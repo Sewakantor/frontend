@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 export default function FormLogin() {
     
     const {register, handleSubmit, formState: {errors} , reset} = useForm();
+    
     const onSubmit = (data) => {
         console.log(data);
         Swal.fire(
@@ -68,7 +69,7 @@ export default function FormLogin() {
                                                 autoComplete="current-password" 
                                                 placeholder="Your Password" 
                                                 className={"block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
-                                                    (errors.passsword ? 'border border-red-600' : 'border border-transparent')}
+                                                    (errors.password ? 'border border-red-600' : 'border border-transparent')}
                                                 {...register("password", {required: "Password dibutuhkan"})}
                                             />
                                             {errors.password && <p className="mt-1 text-red-600 text-xs font-medium">{errors.password.message}</p>}
