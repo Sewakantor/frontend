@@ -3,7 +3,7 @@ import userPicProfile from '../public/assets/images/user-profile.jpg';
 import { StarIcon as StarSolid } from '@heroicons/react/solid'
 import Rating from 'react-rating'
 
-export default function ReviewOnDetail() {
+export default function CardReview() {
     return (
     <div className="rounded-t-xl border-black w-full ">
         <div className="rounded-t-xl flex flex-wrap items-center px-20 py-4 bg-[#DEDEDEDE]">
