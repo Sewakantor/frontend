@@ -2,6 +2,7 @@ import Rating from 'react-rating'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
 import { StarIcon as StarSolid } from '@heroicons/react/solid'
+import ButtonGray from './ButtonGray';
 
 export default function AddReview() {
     const { register, handleSubmit, formState: { errors }, reset, setValue, getValues } = useForm();
@@ -43,11 +44,7 @@ export default function AddReview() {
                         {errors.comment && errors.comment.type === "required" && <p className="mt-1 text-red-600 text-xs font-medium">{errors.comment.message}</p>}
                     </div>
                     <div className="float-right align-text-bottom"> 
-                        <button
-                            type="submit"
-                            className="border px-6 py-3 rounded-md bg-[#C4C4C4] font-bold ">
-                            Submit
-                        </button>
+                        <ButtonGray>Submit</ButtonGray>
                     </div>
                 </form>
             </div>
