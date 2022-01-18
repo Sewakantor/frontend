@@ -10,14 +10,14 @@ export default function FormRegister() {
 
     // Regex on Validation
     const regexEmail = /^\S+@\S+$/i;
-    const regexPassword = /\S{8,}$/;
+    const regexPassword = /(?=(.*[!@#$%^&*()\-__+.]){1,}).(?=(.*[0-9]){1,}).{8,}$/;
     // const regexNoHandphonePlus62= /\+62\S{9,12}$/;
     const regexNoHandphone = /^[8]+\S{9,13}$/;
 
     const onSubmit = (data) => {
         console.log(data);
         Swal.fire(
-            'Register account success!',
+            'Register account success!',    
             'Silahkan cek email untuk verifikasi',
             'success'
         )
