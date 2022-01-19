@@ -5,8 +5,8 @@ import Rating from 'react-rating'
 
 export default function CardReview() {
     return (
-    <div className="rounded-t-xl border-black w-full ">
-        <div className="rounded-t-xl flex flex-wrap items-center px-20 py-4 bg-[#DEDEDEDE]">
+    <div className="rounded-t-xl border-black w-full">
+        <div className="rounded-t-xl flex flex-wrap items-center px-16 py-5 bg-[#DEDEDEDE]">
             <Image
                 src={userPicProfile}
                 width={30}
@@ -27,7 +27,7 @@ export default function CardReview() {
                     />
                 </div>
             </div>
-            <div className="px-20 py-2 leading-relaxed">
+            <div className="px-16 py-7 leading-relaxed">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a consectetur erat, at malesuada tortor. Nulla magna magna, porta at libero at, venenatis consectetur metus. Morbi eget dolor enim. Nulla lectus risus, iaculis at porta eu, lobortis quis erat. Aliquam nec faucibus urna. Aliquam pharetra arcu commodo nisl volutpat, vel malesuada sapien vulputate. Quisque dui dui, iaculis ut arcu varius, pretium bibendum elit. Nam venenatis congue libero vel accumsan. Aliquam dictum fringilla metus et pulvinar. Donec quis libero quis nunc ultrices suscipit. Vivamus nec orci a augue pretium volutpat at non arcu.
 
                 Phasellus lobortis, orci eget faucibus venenatis, orci dui tempus leo, eget convallis justo ante non ex. Mauris interdum semper velit, vitae dictum urna. Pellentesque rutrum tincidunt ex, sed porta ligula molestie suscipit. Etiam et ante mi. Proin luctus imperdiet purus, ut lobortis augue iaculis mollis. Etiam et fringilla mauris, ac pellentesque orci. Vivamus imperdiet ex sed nibh iaculis, non elementum est lacinia. Sed condimentum lectus at massa maximus gravida.</p>
