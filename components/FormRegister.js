@@ -10,14 +10,14 @@ export default function FormRegister() {
 
     // Regex on Validation
     const regexEmail = /^\S+@\S+$/i;
-    const regexPassword = /\S{6,}$/;
+    const regexPassword = /(?=(.*[!@#$%^&*()\-__+.]){1,}).(?=(.*[0-9]){1,}).{8,}$/;
     // const regexNoHandphonePlus62= /\+62\S{9,12}$/;
-    const regexNoHandphone = /^[0]+\S{10,12}$/;
+    const regexNoHandphone = /^[8]+\S{9,13}$/;
 
     const onSubmit = (data) => {
         console.log(data);
         Swal.fire(
-            'Register account success!',
+            'Register account success!',    
             'Silahkan cek email untuk verifikasi',
             'success'
         )
@@ -93,7 +93,7 @@ export default function FormRegister() {
                                                 {...register("password",{required:"Password tidak boleh kosong", pattern: regexPassword})}                                           
                                             />
                                             {errors.password && errors.password.type === "required" && <p className="mt-1 text-red-600 text-xs font-medium">{errors.password.message}</p>}
-                                            {errors.password && errors.password.type === "pattern" && <p className="mt-1 text-red-600 text-xs font-medium">Format password min 6 digit dan tidak ada spasi.</p>}                                        
+                                            {errors.password && errors.password.type === "pattern" && <p className="mt-1 text-red-600 text-xs font-medium">Format password min 8 digit, angka dan huruf special.</p>}                                        
                                         </div>
                                     </div>
                                     <div className="space-y-1">
@@ -114,20 +114,25 @@ export default function FormRegister() {
                                     </div>
                                     <div className="space-y-1">
                                     <label htmlFor="tel" className="mb-2 block text-sm font-medium text-neutral-600"> No. Handphone </label>
-                                        <div className="mt-1">
+                                        <div className="mt-1 flex">
+                                            <input
+                                                disabled
+                                                className='w-2/12 md:w-2/12 lg:w-2/12 px-3 py-2 border border-transparent rounded-lg bg-[#EDEDED] placeholder:text-black'
+                                                placeholder='+62'
+                                            />
                                             <input 
                                                 id="nohandphone" 
                                                 name="nohandphone" 
                                                 type="text" 
                                                 autoComplete="telphone" 
                                                 placeholder="No. Handphone" 
-                                                className={"block w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
+                                                className={"ml-2 block w-10/12 px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
                                                 (errors.nohandphone ? 'border border-red-600' : 'border border-transparent')} 
                                                 {...register("nohandphone",{required: "No. Handphone tidak boleh kosong",pattern:regexNoHandphone})}
                                             />
                                         </div>
                                         {errors.nohandphone && errors.nohandphone.type === "required" && <p className="mt-1 text-red-600 text-xs font-medium">{errors.nohandphone.message}</p>}
-                                        {errors.nohandphone && errors.nohandphone.type === "pattern" && <p className="mt-1 text-red-600 text-xs font-medium">Format No Handphone dimulai dengan 0 , 10 hingga 13 digit</p>}        
+                                        {errors.nohandphone && errors.nohandphone.type === "pattern" && <p className="mt-1 text-red-600 text-xs font-medium">Format No Handphone tidak valid</p>}        
                                     </div>
                                     <div className="my-10 text-sm text-right">
                                         <p className="font-normal"> have an account ? <Link href='/login'><a className="text-redLogo">Sign In</a></Link></p>
