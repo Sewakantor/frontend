@@ -4,26 +4,54 @@ import { ArrowCircleLeftIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
+import axios from 'axios';
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 
 export default function FormRegister() {
-    const {register, handleSubmit, formState: {errors}, reset } = useForm();
+    const {register, handleSubmit, formState: {errors}, reset ,setValue} = useForm();
+    const router = useRouter();
+    const loginStatus = useSelector((state) => state.user.isLogin);
 
     // Regex on Validation
     const regexEmail = /^\S+@\S+$/i;
     const regexPassword = /(?=(.*[!@#$%^&*()\-__+.]){1,}).(?=(.*[0-9]){1,}).{8,}$/;
-    // const regexNoHandphonePlus62= /\+62\S{9,12}$/;
     const regexNoHandphone = /^[8]+\S{9,13}$/;
 
-    const onSubmit = (data) => {
+    setValue("role","customer")
+    
+    const onSubmit = async (data) => {
+        data.phone = parseInt(data.phone)
         console.log(data);
-        Swal.fire(
-            'Register account success!',    
-            'Silahkan cek email untuk verifikasi',
-            'success'
-        )
-        reset();
+        await axios
+        .post('http://13.229.240.1:8080/users', data)
+        .then((res) => {
+            // console.log(res);
+            Swal.fire(
+                'Login Success!',
+                'Redirect to homepage..',
+                'success'
+            )
+            reset();
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+            const pesan = error.response.data.errors[0];
+            Swal.fire(
+                'Something went wrong',
+                ""+pesan+"",
+                'error'
+            )
+        });
     }
-
+    
+    useEffect(() => {
+        if (loginStatus){
+            router.push('/')
+        }
+    }, [loginStatus]);
+    
     return (
         <section className="overflow-hidden">
             <div className="flex min-h-screen overflow-hidden">
@@ -121,18 +149,19 @@ export default function FormRegister() {
                                                 placeholder='+62'
                                             />
                                             <input 
-                                                id="nohandphone" 
-                                                name="nohandphone" 
-                                                type="text" 
+                                                id="phone" 
+                                                name="phone" 
+                                                type="number" 
                                                 autoComplete="telphone" 
-                                                placeholder="No. Handphone" 
+                                                placeholder="No. Handphone"
+                                                style={{}}
                                                 className={"ml-2 block w-10/12 px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform rounded-lg bg-[#EDEDED] outline-none border border-red-600" + 
-                                                (errors.nohandphone ? 'border border-red-600' : 'border border-transparent')} 
-                                                {...register("nohandphone",{required: "No. Handphone tidak boleh kosong",pattern:regexNoHandphone})}
+                                                (errors.phone ? 'border border-red-600' : 'border border-transparent')} 
+                                                {...register("phone",{required: "No. Handphone tidak boleh kosong",pattern:regexNoHandphone})}
                                             />
                                         </div>
-                                        {errors.nohandphone && errors.nohandphone.type === "required" && <p className="mt-1 text-red-600 text-xs font-medium">{errors.nohandphone.message}</p>}
-                                        {errors.nohandphone && errors.nohandphone.type === "pattern" && <p className="mt-1 text-red-600 text-xs font-medium">Format No Handphone tidak valid</p>}        
+                                        {errors.phone && errors.phone.type === "required" && <p className="mt-1 text-red-600 text-xs font-medium">{errors.phone.message}</p>}
+                                        {errors.phone && errors.phone.type === "pattern" && <p className="mt-1 text-red-600 text-xs font-medium">Format No Handphone tidak valid</p>}        
                                     </div>
                                     <div className="my-10 text-sm text-right">
                                         <p className="font-normal"> have an account ? <Link href='/login'><a className="text-redLogo">Sign In</a></Link></p>

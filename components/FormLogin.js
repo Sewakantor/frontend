@@ -4,21 +4,65 @@ import { ArrowCircleLeftIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
+import { useEffect } from 'react'
+import axios from 'axios';
+import { isExpired, decodeToken } from "react-jwt";
+import { loginUser } from '../store/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from "next/router";
+
 
 export default function FormLogin() {
     
     const {register, handleSubmit, formState: {errors} , reset} = useForm();
-    
-    const onSubmit = (data) => {
+    const dispatch = useDispatch();
+    const router = useRouter();
+    const loginStatus = useSelector((state) => state.user.isLogin);
+
+
+    const onSubmit = async (data) => {
         console.log(data);
-        Swal.fire(
-            'Login Success!',
-            'Redirect to homepage..',
-            'success'
-        )
-        reset();
+        await axios
+        .post('http://13.229.240.1:8080/auth', data)
+        .then((res) => {
+            console.log(res.data.data);
+            const realData = res.data.data
+            dispatch(
+                loginUser({
+                    id:realData.id,
+                    name:realData.name,
+                    role:realData.role,
+                    token:realData.token
+                })
+            )
+            Swal.fire(
+                'Login Success!',
+                'Redirect to homepage..',
+                'success'
+            )
+            .then(function(){
+                setTimeout(1000)
+                router.push('/')
+            })
+            
+        })
+        .catch((error) => {
+            const pesanHead = error.response.data.message;
+            const pesanIsi = error.response.data.errors[0]
+            Swal.fire(
+                ""+pesanHead+"",
+                ""+pesanIsi+"",
+                'error'
+            )
+        });
     }
 
+    useEffect(() => {
+        if (loginStatus){
+            router.push('/')
+        }
+    }, []);
+    
     return (
         <section className="overflow-hidden">
             <div className="flex min-h-screen overflow-hidden">
