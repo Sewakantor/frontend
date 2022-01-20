@@ -1,21 +1,56 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LogoSVG from '../public/assets/images/main-logo-color.svg';
 import userPicProfile from '../public/assets/images/user-profile.jpg';
 import { Popover } from '@headlessui/react';
 import { usePopper } from 'react-popper';
 import SearchOnNav from './SearchOnNav';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from '../store/userSlice';
+import Swal from 'sweetalert2'
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const isLogin = false;
-
     // Popper setup
     const [referenceElement, setReferenceElement] = useState()
     const [popperElement, setPopperElement] = useState()
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
         placement: 'bottom-end',
     })
+    
+    let isLogin = false
+    if(loginStatus){
+        isLogin = true;
+    }
+    
+    const [isOpen, setIsOpen] = useState(false);
+    const loginStatus = useSelector((state) => state.user.isLogin);
+    const nameUser = useSelector((state) => state.user.name)
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        console.log("logout");
+        Swal.fire({
+            title: 'Are you sure want to logout?',
+            text: "You have to login again",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Logout'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Logout success',
+                    'You have to login again',
+                    'success'
+                )
+                dispatch(
+                    logoutUser()
+                )
+            }
+          })
+        
+    }
     
 
     return (
@@ -47,7 +82,7 @@ export default function Navbar() {
                                 <div className="hidden lg:block">
                                     <div className="grid grid-rows-2 grid-flow-col">
                                         <div className="col-span-2">
-                                            <a className='text-sm font-medium'>Selamet Riyadi</a>
+                                            <a className='text-sm font-medium'>{nameUser}</a>
                                         </div>
                                         <div className="col-span-2">
                                             <a className='text-sm'>Customer</a>
@@ -71,10 +106,10 @@ export default function Navbar() {
                                                     className="absolute w-36 max-w-sm pr-20 px-4 mt-3 sm:px-0 lg:max-w-3xl">
                                                         <div className="overflow-hidden rounded-lg shadow-lg">
                                                             <div className="relative grid bg-white p-3 lg:grid-cols-2">
-                                                                <a className='text-sm font-medium' href='/'>Live Chat</a>
+                                                                <a className='text-sm font-medium'>Live Chat</a>
                                                             </div>
                                                             <div className="relative grid bg-white p-3 lg:grid-cols-2 text-black bg-red-400 hover:bg-red-300 text-white">
-                                                                <a className='text-sm font-medium' href='/'>Log Out</a>
+                                                                <button className='text-sm font-medium' onClick={handleLogout} >Log Out</button>
                                                             </div>
                                                     </div>
                                                 </Popover.Panel>
@@ -84,8 +119,8 @@ export default function Navbar() {
                                 </div>
                             ) : (
                                 <div className="hidden lg:block">
-                                    <a className="inline-block py-3 px-8 text-sm leading-normal font-normal" href="#">LOGIN</a>
-                                    <a className="inline-block py-2 px-5 text-sm text-white font-bold leading-normal bg-red-400 hover:bg-red-300 rounded-full transition duration-200" href="#">SIGN UP</a>
+                                    <a className="inline-block py-3 px-8 text-sm leading-normal font-normal" >LOGIN</a>
+                                    <a className="inline-block py-2 px-5 text-sm text-white font-bold leading-normal bg-red-400 hover:bg-red-300 rounded-full transition duration-200" >SIGN UP</a>
                                 </div>
                             )}
                         </div>
@@ -95,7 +130,7 @@ export default function Navbar() {
                     <div onClick={() => setIsOpen(false)} className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25" />
                     <nav className="relative flex flex-col py-6 px-6 w-full h-full bg-white border-r overflow-y-auto">
                         <div className="flex items-center mb-8">
-                            <a className="mr-auto text-2xl font-medium leading-none" href="#">
+                            <a className="mr-auto text-2xl font-medium leading-none" >
                                 <Image className="h-7" src={LogoSVG} alt="" width={120} height={30} />
                             </a>
                             <button onClick={() => setIsOpen(false)} className="navbar-close">
@@ -114,13 +149,13 @@ export default function Navbar() {
                         <div className="mt-auto">
                             {isLogin ? (
                                  <div className="pt-6">
-                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" href="#">Live Chat</a>
-                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" href="#">Log Out</a>
+                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" >Live Chat</a>
+                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" onClick={handleLogout}>Log Out</a>
                                 </div>
                             ) : (
                                 <div className="pt-6">
-                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" href="#">Log Out</a>
-                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" href="#">Sign Up</a>
+                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" onClick={handleLogout}>Log Out</a>
+                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200">Sign Up</a>
                                 </div>
                             )}
                             <p className="mt-6 mb-4 text-sm text-center text-gray-500">
