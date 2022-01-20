@@ -8,7 +8,7 @@ import SearchOnNav from './SearchOnNav';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const isLogin = false;
+    const isLogin = true;
 
     // Popper setup
     const [referenceElement, setReferenceElement] = useState()
@@ -19,8 +19,8 @@ export default function Navbar() {
     
 
     return (
-        <>
-            <section className="py-5">
+        <div className="">
+            <div className="border-b-2 py-5 shadow-md">
                 <div className="container px-4 mx-auto">
                     <nav className="relative">
                         <div className="flex justify-between items-center">
@@ -52,7 +52,7 @@ export default function Navbar() {
                                         <div className="col-span-2">
                                             <a className='text-sm'>Customer</a>
                                         </div>
-                                        <div className="row-span-2 col-span-2 px-3 mt-2">
+                                        <div className="row-span-2 col-span-2 px-3 mt-2 z-10">
                                              <Popover className="relative">
                                                 <Popover.Button 
                                                     ref={setReferenceElement}>
@@ -73,7 +73,7 @@ export default function Navbar() {
                                                             <div className="relative grid bg-white p-3 lg:grid-cols-2">
                                                                 <a className='text-sm font-medium' href='/'>Live Chat</a>
                                                             </div>
-                                                            <div className="relative grid bg-white p-3 lg:grid-cols-2 text-black bg-red-400 hover:bg-red-300 text-white">
+                                                            <div className="relative grid p-3 lg:grid-cols-2 bg-red-400 hover:bg-red-300 text-white">
                                                                 <a className='text-sm font-medium' href='/'>Log Out</a>
                                                             </div>
                                                     </div>
@@ -129,8 +129,8 @@ export default function Navbar() {
                         </div>
                     </nav>
                 </div>
-            </section>
-        </>
+            </div>
+        </div>
     )
 }
 
