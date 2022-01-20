@@ -54,8 +54,8 @@ export default function Navbar() {
     
 
     return (
-        <>
-            <section className="py-5">
+        <div className="">
+            <div className="border-b-2 py-5 shadow-md">
                 <div className="container px-4 mx-auto">
                     <nav className="relative">
                         <div className="flex justify-between items-center">
@@ -87,7 +87,7 @@ export default function Navbar() {
                                         <div className="col-span-2">
                                             <a className='text-sm'>Customer</a>
                                         </div>
-                                        <div className="row-span-2 col-span-2 px-3 mt-2">
+                                        <div className="row-span-2 col-span-2 px-3 mt-2 z-10">
                                              <Popover className="relative">
                                                 <Popover.Button 
                                                     ref={setReferenceElement}>
@@ -164,8 +164,8 @@ export default function Navbar() {
                         </div>
                     </nav>
                 </div>
-            </section>
-        </>
+            </div>
+        </div>
     )
 }
 

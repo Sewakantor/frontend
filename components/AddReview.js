@@ -20,7 +20,7 @@ export default function AddReview() {
         })
     }
     return (
-        <div className='container mx-auto px-2'>
+        <div className='pt-5'>
             <h1 className="text-2xl font-bold mb-2">Review Kantor</h1>
             <div className=''>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,5 +49,6 @@ export default function AddReview() {
                 </form>
             </div>
         </div>
+        
     )
 }

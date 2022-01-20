@@ -3,7 +3,7 @@ import dummyImage from '../public/assets/images/card-kantor-dummy-image.jpg'
 
 export default function CardOffice() {
     return (
-        <div className="w-60 rounded overflow-hidden shadow-lg">
+        <div className="w-64 rounded overflow-hidden shadow-lg">
             <div className="h-80 max-w-full relative">
                 <Image className='absolute rounded-md object-none' layout="fill" src={dummyImage} alt="Sunset in the mountains" objectFit='cover'/>
             </div>

@@ -19,7 +19,7 @@ export default function FormSayaBerminat() {
     }
 
     return (
-        <>
+        <div className="pb-3">
             <div className="w-80 border rounded-lg border-black p-5">
                 <div className="min-w-full">
                     <h1 className="w-6/8 font-bold text-xl leading-relaxed">Kami akan segera menghubungi anda</h1>
@@ -91,6 +91,6 @@ export default function FormSayaBerminat() {
                     </form>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
