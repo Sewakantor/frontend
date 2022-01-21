@@ -4,28 +4,21 @@ import { ArrowCircleLeftIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
-import { useEffect } from 'react'
 import axios from 'axios';
 import { isExpired, decodeToken } from "react-jwt";
 import { loginUser } from '../store/userSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { useRouter } from "next/router";
+import { useDispatch } from 'react-redux'
 
 
-export default function FormLogin() {
+export default function FormLogin({router}) {
     
     const {register, handleSubmit, formState: {errors} , reset} = useForm();
     const dispatch = useDispatch();
-    const router = useRouter();
-    const loginStatus = useSelector((state) => state.user.isLogin);
 
-
-    const onSubmit = async (data) => {
-        console.log(data);
-        await axios
+    const requestLogin = (data) => {
+        axios
         .post('http://13.229.240.1:8080/auth', data)
         .then((res) => {
-            console.log(res.data.data);
             const realData = res.data.data
             dispatch(
                 loginUser({
@@ -39,12 +32,11 @@ export default function FormLogin() {
                 'Login Success!',
                 'Redirect to homepage..',
                 'success'
-            )
-            .then(function(){
-                setTimeout(1000)
+            ).then(function(){
+                reset()
+                setTimeout(5000)
                 router.push('/')
             })
-            
         })
         .catch((error) => {
             const pesanHead = error.response.data.message;
@@ -57,11 +49,10 @@ export default function FormLogin() {
         });
     }
 
-    useEffect(() => {
-        if (loginStatus){
-            router.push('/')
-        }
-    }, []);
+    const onSubmit = (data) => {
+        requestLogin(data)
+    }
+    
     
     return (
         <section className="overflow-hidden">
@@ -149,9 +140,11 @@ export default function FormLogin() {
                                 </form>
                             </div>
                         </div>
-                        <div className="mt-2 text-center font-normal text-sm">
-                            <p>Don't have an account? <Link href="/register"><a className="text-redLogo">Sign up</a></Link></p>
-                        </div>
+                        <Link href='/register'>
+                            <div className="mt-2 text-center font-normal text-sm">
+                                <p>Don't have an account? <Link href="/register"><a className="text-redLogo">Sign up</a></Link></p>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
