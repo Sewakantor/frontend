@@ -27,12 +27,10 @@ export default function ActivationLayout() {
             })
         })
         .catch((error) => {
-            console.log(error);
+            const errMsg = error.response.data.errors[0]
             Swal.fire(
-                'error',
-                'error',
-                // ""+pesanHead+"",
-                // ""+pesanIsi+"",
+                'Error on activating account!',
+                ""+errMsg+"",
                 'error'
             )
         });
@@ -42,7 +40,6 @@ export default function ActivationLayout() {
         await requestActivate(id)
     }
     
-
     return (
         <section className="overflow-hidden">
             <div className="flex min-h-screen overflow-hidden">
