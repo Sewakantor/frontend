@@ -29,7 +29,7 @@ export default function FormRegister() {
             console.log(res);
             const pesan = res.data.message
             Swal.fire(
-                'Login Success!',
+                'Register Success!',
                 ""+pesan+"",
                 'success'
             )
