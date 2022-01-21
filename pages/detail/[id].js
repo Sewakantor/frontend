@@ -14,7 +14,7 @@ export default function index() {
     return (
         <div>
             <Navbar/>
-            <div className="pt-10 container mx-auto px-4 sm:px-2 mb-10">
+            <div className="pt-14 container mx-auto px-4 sm:px-2 mb-10">
                 <HeaderOnDetail/>
                 <AboutAndForm/>
                 <AddReview/>

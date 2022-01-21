@@ -8,6 +8,7 @@ import SearchOnNav from './SearchOnNav';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../store/userSlice';
 import Swal from 'sweetalert2'
+import Link from 'next/link';
 
 export default function Navbar() {
     // Popper setup
@@ -16,11 +17,7 @@ export default function Navbar() {
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
         placement: 'bottom-end',
     })
-    
-    let isLogin = false
-    if(loginStatus){
-        isLogin = true;
-    }
+
     
     const [isOpen, setIsOpen] = useState(false);
     const loginStatus = useSelector((state) => state.user.isLogin);
@@ -72,13 +69,13 @@ export default function Navbar() {
                             </div>
                             
                             <div className=" hidden absolute top-1/2 left-1/3 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:w-96 lg:space-x-18 ">
-                                {isLogin ? (
+                                {loginStatus ? (
                                     <SearchOnNav/>
                                 ) : (
                                     null
                                 )}
                             </div>
-                            {isLogin ? (
+                            {loginStatus ? (
                                 <div className="hidden lg:block">
                                     <div className="grid grid-rows-2 grid-flow-col">
                                         <div className="col-span-2">
@@ -105,11 +102,13 @@ export default function Navbar() {
                                                     {...attributes.popper}
                                                     className="absolute w-36 max-w-sm pr-20 px-4 mt-3 sm:px-0 lg:max-w-3xl">
                                                         <div className="overflow-hidden rounded-lg shadow-lg">
-                                                            <div className="relative grid bg-white p-3 lg:grid-cols-2">
-                                                                <a className='text-sm font-medium'>Live Chat</a>
-                                                            </div>
-                                                            <div className="relative grid bg-white p-3 lg:grid-cols-2 text-black bg-red-400 hover:bg-red-300 text-white">
-                                                                <button className='text-sm font-medium' onClick={handleLogout} >Log Out</button>
+                                                            <Link href="/livechat">
+                                                                <div className="relative bg-white p-3 lg:grid-cols-2 hover:cursor-pointer">
+                                                                    <a className='text-sm font-medium'>Live Chat</a>
+                                                                </div>
+                                                            </Link>
+                                                            <div className="relative grid p-3 lg:grid-cols-2 bg-red-400 hover:bg-red-300 text-white hover:cursor-pointer" onClick={handleLogout}>
+                                                                <a className='text-sm font-medium'>Log Out</a>
                                                             </div>
                                                     </div>
                                                 </Popover.Panel>
@@ -119,8 +118,12 @@ export default function Navbar() {
                                 </div>
                             ) : (
                                 <div className="hidden lg:block">
-                                    <a className="inline-block py-3 px-8 text-sm leading-normal font-normal" >LOGIN</a>
-                                    <a className="inline-block py-2 px-5 text-sm text-white font-bold leading-normal bg-red-400 hover:bg-red-300 rounded-full transition duration-200" >SIGN UP</a>
+                                    <Link href="/login">
+                                        <a className="inline-block py-3 px-8 text-sm leading-normal font-normal" >LOGIN</a>
+                                    </Link>
+                                    <Link href="/login">
+                                        <a className="inline-block py-2 px-5 text-sm text-white font-bold leading-normal bg-red-400 hover:bg-red-300 rounded-full transition duration-200" >SIGN UP</a>
+                                    </Link>
                                 </div>
                             )}
                         </div>
@@ -140,22 +143,30 @@ export default function Navbar() {
                             </button>
                         </div>
                         <div className=''>
-                            {isLogin ? (
+                            {loginStatus ? (
                                 <SearchOnNav/>
                             ) : (
                                 null
                             )}
                         </div>
                         <div className="mt-auto">
-                            {isLogin ? (
+                            {loginStatus ? (
                                  <div className="pt-6">
-                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" >Live Chat</a>
-                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" onClick={handleLogout}>Log Out</a>
+                                     <Link href="/livechat">
+                                        <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" >Live Chat</a>
+                                     </Link>
+                                     <button onClick={handleLogout}>
+                                        <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" onClick={handleLogout}>Log Out</a>
+                                     </button>
                                 </div>
                             ) : (
                                 <div className="pt-6">
-                                    <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" onClick={handleLogout}>Log Out</a>
-                                    <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200">Sign Up</a>
+                                    <Link href="/login">
+                                        <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium">Login</a>
+                                     </Link>
+                                     <Link href="/register">
+                                        <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200">Sign Up</a>
+                                     </Link>
                                 </div>
                             )}
                             <p className="mt-6 mb-4 text-sm text-center text-gray-500">

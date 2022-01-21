@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux'
 export default function FormRegister() {
     const {register, handleSubmit, formState: {errors}, reset ,setValue} = useForm();
     const router = useRouter();
-    const loginStatus = useSelector((state) => state.user.isLogin);
+    const userData = useSelector((state) => state.user);
 
     // Regex on Validation
     const regexEmail = /^\S+@\S+$/i;
@@ -20,23 +20,22 @@ export default function FormRegister() {
     const regexNoHandphone = /^[8]+\S{9,13}$/;
 
     setValue("role","customer")
-    
-    const onSubmit = async (data) => {
+
+    const requestRegister = (data) => {
         data.phone = parseInt(data.phone)
-        console.log(data);
-        await axios
+        axios
         .post('http://13.229.240.1:8080/users', data)
         .then((res) => {
-            // console.log(res);
+            console.log(res);
+            const pesan = res.data.message
             Swal.fire(
-                'Login Success!',
-                'Redirect to homepage..',
+                'Register Success!',
+                ""+pesan+"",
                 'success'
             )
             reset();
         })
         .catch((error) => {
-            console.log(error.response.data);
             const pesan = error.response.data.errors[0];
             Swal.fire(
                 'Something went wrong',
@@ -46,11 +45,15 @@ export default function FormRegister() {
         });
     }
     
+    const onSubmit = (data) => {
+        requestRegister(data)
+    }
+    
     useEffect(() => {
-        if (loginStatus){
+        if (userData.isLogin){
             router.push('/')
         }
-    }, [loginStatus]);
+    }, [userData.isLogin]);
     
     return (
         <section className="overflow-hidden">
@@ -187,7 +190,7 @@ export default function FormRegister() {
                                             focus:ring-2
                                             focus:ring-offset-2
                                             focus:ring-blue-500
-                                        "> Sign in </button>
+                                        "> Sign Up </button>
                                     </div>
                                 </form>
                             </div>

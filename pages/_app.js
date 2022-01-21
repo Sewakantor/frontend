@@ -4,6 +4,7 @@ import { store, persistor } from "../store/store";
 import '../styles/globals.css'
 
 export default function MyApp({ Component, pageProps }) {
+  
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
