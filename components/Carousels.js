@@ -37,7 +37,7 @@ export default function Carousels() {
     ]
   };
     return (
-      <div className='container mx-auto px-2 pt-7'>
+      <div className='container mx-auto px-4 lg:px-2 pt-7'>
         <h1 className='pb-2 font-bold text-2xl'>Rekomendasi Daerah Kantor </h1>
         <div className='pl-10 sm:pl-0 md:pl-10 lg:pl-0'>
           <Slider {...settings} className='pl-10 sm:pl-0 md:pl-5 lg:pl-0'>
