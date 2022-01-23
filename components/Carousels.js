@@ -38,19 +38,21 @@ export default function Carousels() {
   };
     return (
       <div className='container mx-auto px-2 pt-7'>
-        <h1 className='pb-2 pl-16 font-bold text-2xl'>Rekomendasi Daerah Kantor </h1>
-        <Slider {...settings} className='pl-16'>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-          <CardCarousel/>
-        </Slider>
+        <h1 className='pb-2 font-bold text-2xl'>Rekomendasi Daerah Kantor </h1>
+        <div className='pl-10 sm:pl-0 md:pl-10 lg:pl-0'>
+          <Slider {...settings} className='pl-10 sm:pl-0 md:pl-5 lg:pl-0'>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+            <CardCarousel/>
+          </Slider>
+        </div>
       </div>
     )
 }

@@ -1,7 +1,7 @@
 export default function Testimoni() {
     return (
-        <section className="flex items-center justify-center py-16  min-w-screen">
-            <div className="max-w-6xl px-12 mx-auto  md:px-16 xl:px-10">
+        <section className="flex items-center justify-center py-16  min-w-screen bg-[#efefef] rounded-lg mb-8">
+            <div className="max-w-6xl px-12 mx-auto  md:px-16 xl:px-10 ">
                 <div className="flex flex-col items-center lg:flex-row">
                     <div className="flex flex-col items-start justify-center w-full h-full pr-8 mb-10 lg:mb-0 lg:w-1/2">
                         <p className="mb-2 text-base font-medium tracking-tight text-redLogo uppercase">
@@ -23,7 +23,7 @@ export default function Testimoni() {
                                     </svg>
                                     <p className="mt-2 text-sm text-gray-600 sm:text-base lg:text-sm xl:text-base">The product is really cool, so I can get an office for my employees.</p>
                                 </div>
-                                <h3 className="pl-12 mt-3 text-sm font-medium leading-5 text-gray-800 truncate sm:text-base lg:text-sm lg:text-base">
+                                <h3 className="pl-12 mt-3 text-sm font-medium leading-5 text-gray-800 truncate sm:text-base lg:text-sm">
                                     Rachmat Agung
                                     <span className="mt-1 text-sm leading-5 text-gray-500 truncate">
                                         - CEO LampungCom
@@ -46,7 +46,7 @@ export default function Testimoni() {
                                         This really helped me in finding an office quickly because we need to add more employees.
                                     </p>
                                 </div>
-                                <h3 className="pl-12 mt-3 text-sm font-medium leading-5 text-gray-800 truncate sm:text-base lg:text-sm lg:text-base">
+                                <h3 className="pl-12 mt-3 text-sm font-medium leading-5 text-gray-800 truncate sm:text-base lg:text-sm">
                                     Avtara Khrisna
                                     <span className="mt-1 text-sm leading-5 text-gray-500 truncate">
                                         - CEO Mamatata
@@ -69,7 +69,7 @@ export default function Testimoni() {
                                         I can't express enough, how amazing this service has been for my company.
                                     </p>
                                 </div>
-                                <h3 className="pl-12 mt-3 text-sm font-medium leading-5 text-gray-800 truncate sm:text-base lg:text-sm lg:text-base">
+                                <h3 className="pl-12 mt-3 text-sm font-medium leading-5 text-gray-800 truncate sm:text-base lg:text-sm">
                                     I Wayan Adi
                                     <span className="mt-1 text-sm leading-5 text-gray-500 truncate">
                                         - CEO Balikuliner

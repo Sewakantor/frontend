@@ -13,20 +13,18 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 .slick-prev {
-  left: 3% !important;
+  right: 80px !important;
   z-index: 1;
 }
 
 .slick-next {
-  right: 3% !important;
+  right: 65px !important;
   z-index: 1;
 }
 
 .slick-prev:before {
   color: black !important;
-  box-shadow: 10px;
 }
 .slick-next:before {
   color: black !important;
