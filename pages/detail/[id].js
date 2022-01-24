@@ -19,12 +19,12 @@ export const getServerSideProps = async (context) => {
         }
         return { props : data };
     } catch (err) {
-    return { notFound: true };
+        return { notFound: true };
     }
 };
 
 export default function index({data}) {
-    console.log("data di index : ",data);
+    // console.log("data di index : ",data);
 
     return (
         <div>
