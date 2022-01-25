@@ -1,5 +1,9 @@
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import React from 'react';
+import Footer from '../../components/Footer';
+import ListCardOffice from '../../components/ListCardOffice';
+import Navbar from '../../components/Navbar';
 
 export const getServerSideProps = async (context) => {
     const { complex_name } = context.query;
@@ -14,11 +18,18 @@ export const getServerSideProps = async (context) => {
     }
 };
 
-export default function index({data}) {
-    console.log(data);
+export default function index( {data} ) {
+    const router = useRouter()
+    const { complex_name } = router.query
+
     return(
         <>
-            Masuk
+            <Navbar/>
+            <div className='container mx-auto px-4 z-10'>
+                <h1 className='pt-8 text-left font-semibold text-2xl'>Search : <a className='font-bold italic'>{complex_name}</a></h1>
+                <ListCardOffice data={data}/>
+                <Footer/>
+            </div>
         </>
     )
 }

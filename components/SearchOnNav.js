@@ -30,8 +30,6 @@ export default function SearchOnNav() {
         console.log(res)
     }
     const handleOnSelect = (item) => {
-        console.log("item : ",item);
-        console.log("item.ID : ",item.ID)
         router.push('/search?complex_name=' + item.Name)
     }
     const handleOnFocus = () => {
@@ -51,7 +49,7 @@ export default function SearchOnNav() {
                 onFocus={handleOnFocus}
                 onClear={handleOnClear}
                 fuseOptions={{ keys: ["Name"] }} 
-                resultStringKeyName="Name" // Search in the description text as well
+                resultStringKeyName="Name"
                 styling={{ zIndex: 10 }} 
             />
         </div>

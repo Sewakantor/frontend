@@ -40,7 +40,7 @@ export default function index({data}) {
                     <ButtonGray>See all</ButtonGray>
                 </div>
                 <h1 className='font-bold pb-7 pt-20 text-center lg:text-left'>Kantor Lainnya</h1>
-                <ListCardOffice/>
+                {/* <ListCardOffice/> */}
             </div>
             <Footer/>
         </div>
