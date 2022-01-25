@@ -30,7 +30,7 @@ export default function HeaderOnDetail({ data }) {
                             </div>
                             <div className="mt-3">
                                 <p className="text-xl font-semibold">Luas Lantai</p>
-                                <p className='text-xl text-gray-500'>{data.TotalSurface}</p>
+                                <p className='text-xl text-gray-500'>{data.FloorSurface}</p>
                             </div>
                         </div>
                         <div className="flex flex-wrap -mx-2 mt-10 mb-12">

@@ -1,14 +1,59 @@
 import { SearchIcon } from '@heroicons/react/outline'
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 export default function SearchOnNav() {
+    const router = useRouter();
+    const [dataComplex, setDataComplex] = useState();
+    const [isLoading, setLoading] = useState(false)
+
+    // Fetching data
+    useEffect(async () => {
+        setLoading(true)
+        await fetch('http://13.229.240.1:8080/property/complex')
+          .then((res) => res.json())
+          .then((data) => {
+            setDataComplex(data.data)
+            setLoading(false)
+          })
+    }, [])
+    
+    // Loading Search Bar
+    if (isLoading) return <h1>Loading search bar..</h1>
+
+    // Handle Search Bar
+    const handleOnSearch = (string, results) => {
+        console.log(string, results)
+    }   
+    const handleOnHover = (res) => {
+        console.log(res)
+    }
+    const handleOnSelect = (item) => {
+        console.log("item : ",item);
+        console.log("item.ID : ",item.ID)
+        router.push('/search?complex_name=' + item.Name)
+    }
+    const handleOnFocus = () => {
+        console.log('Focused')  
+    }
+    const handleOnClear = () => {
+        console.log("Cleared");
+    }
+
     return (
-        <div className="container flex mx-auto border-2 rounded-full min-w-full max-w-min bg-gray-100">
-            <div className="flex rounded">
-                <button className="flex items-center justify-center px-4">
-                    <SearchIcon className="w-6 h-6 text-gray-600"/>
-                </button>
-                <input type="text" className="py-2 min-w-full max-w-min text-gray-600 outline-none bg-transparent" placeholder="Lokasi atau nama properti..."/>
-            </div>
+        <div className='w-full'>
+            <ReactSearchAutocomplete
+                items={dataComplex}
+                onSearch={handleOnSearch}
+                onHover={handleOnHover}
+                onSelect={handleOnSelect}
+                onFocus={handleOnFocus}
+                onClear={handleOnClear}
+                fuseOptions={{ keys: ["Name"] }} 
+                resultStringKeyName="Name" // Search in the description text as well
+                styling={{ zIndex: 10 }} 
+            />
         </div>
     )
 }
