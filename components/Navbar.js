@@ -105,6 +105,11 @@ export default function Navbar() {
                                                                     <a className='text-sm font-medium'>Live Chat</a>
                                                                 </div>
                                                             </Link>
+                                                            <Link href="/history">
+                                                                <div className="relative bg-white p-3 lg:grid-cols-2 hover:cursor-pointer">
+                                                                    <a className='text-sm font-medium'>History</a>
+                                                                </div>
+                                                            </Link>
                                                             <div className="relative grid p-3 lg:grid-cols-2 bg-red-400 hover:bg-red-300 text-white hover:cursor-pointer" onClick={handleLogout}>
                                                                 <a className='text-sm font-medium'>Log Out</a>
                                                             </div>
