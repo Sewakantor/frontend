@@ -10,6 +10,7 @@ import toRupiah from '@develoka/angka-rupiah-js';
 export default function index({}) {
     const JWT = useSelector((state) => state.user.token);
     const isLogin = useSelector((state) => state.user.isLogin);
+    const id = useSelector((state) => state.user.id);
     if (!isLogin) {
         const router = useRouter();
         router.push('/login');
@@ -22,7 +23,7 @@ export default function index({}) {
     // Fetching data
     useEffect(async () => {
         setLoading(true)
-        await fetch('http://13.229.240.1:8080/reservation/24', {
+        await fetch(`http://13.229.240.1:8080/reservation/${id}`, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
