@@ -13,3 +13,19 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.slick-prev {
+  right: 80px !important;
+  z-index: 1;
+}
+
+.slick-next {
+  right: 65px !important;
+  z-index: 1;
+}
+
+.slick-prev:before {
+  color: black !important;
+}
+.slick-next:before {
+  color: black !important;
+}

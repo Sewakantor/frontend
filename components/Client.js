@@ -5,6 +5,7 @@ export default function Client() {
     return (
         <>
             <section class="py-20">
+            <h1 className='mb-5 text-left font-bold text-2xl'>Berbagai Klien Kami</h1>
                 <div class="container mx-auto px-4">
                     <div class="flex flex-wrap -mx-2">
                         <div class="mb-4 w-full md:w-1/2 lg:w-1/4 px-2">

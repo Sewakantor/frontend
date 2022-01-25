@@ -10,7 +10,7 @@ export default function CardCarousel() {
                     src={dummyImage} 
                     alt="Kantor image" 
                     objectFit='cover'
-                    className='absolute rounded-md object-none rounded-[15px]' 
+                    className='absolute object-none rounded-[15px]' 
                 />
             </div>
             <div className="py-1">
