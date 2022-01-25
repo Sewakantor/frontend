@@ -10,6 +10,7 @@ import { logoutUser } from '../store/userSlice';
 import Swal from 'sweetalert2'
 import Link from 'next/link';
 
+
 export default function Navbar() {
     // Popper setup
     const [referenceElement, setReferenceElement] = useState()
@@ -17,7 +18,6 @@ export default function Navbar() {
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
         placement: 'bottom-end',
     })
-
     
     const [isOpen, setIsOpen] = useState(false);
     const loginStatus = useSelector((state) => state.user.isLogin);
@@ -49,7 +49,6 @@ export default function Navbar() {
         
     }
     
-
     return (
         <div className="">
             <div className="border-b-2 py-5 shadow-md">
@@ -67,7 +66,6 @@ export default function Navbar() {
                                     </svg>
                                 </button>
                             </div>
-                            
                             <div className=" hidden absolute top-1/2 left-1/3 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:w-96 lg:space-x-18 ">
                                 {loginStatus ? (
                                     <SearchOnNav/>
