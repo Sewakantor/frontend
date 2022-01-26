@@ -51,7 +51,7 @@ export default function index({info,review,recommend}) {
                 <AboutAndForm data={infoData}/>
                 <h1 className="text-2xl font-bold">Review Kantor</h1>
                 {userData.isLogin ? (
-                    <AddReview/>
+                    <AddReview id={id}/>
                 ) : (
                     <h1 className="text-center text-lg font-bold pb-10 pt-10">Sorry you have to be login first before add review</h1>
                 )}
