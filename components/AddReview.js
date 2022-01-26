@@ -20,8 +20,7 @@ export default function AddReview() {
         })
     }
     return (
-        <div className='pt-5'>
-            <h1 className="text-2xl font-bold mb-2">Review Kantor</h1>
+        <div className='pt-2'>
             <div className=''>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Rating

@@ -1,7 +1,11 @@
 import CardCarousel from './CardCarousel';
 import Slider from "react-slick";
+import { useRouter } from 'next/router';
 
-export default function Carousels() {
+export default function Carousels( {data} ) {
+  const router = useRouter()
+
+
   const settings = {
     dots: false,
     infinite: true,
@@ -36,24 +40,22 @@ export default function Carousels() {
       }
     ]
   };
-    return (
-      <div className='container mx-auto px-4 lg:px-2 pt-7'>
-        <h1 className='pb-2 font-bold text-2xl'>Rekomendasi Daerah Kantor </h1>
-        <div className='pl-10 sm:pl-0 md:pl-10 lg:pl-0'>
-          <Slider {...settings} className='pl-10 sm:pl-0 md:pl-5 lg:pl-0'>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-            <CardCarousel/>
-          </Slider>
-        </div>
+
+  const onClickCaro = (name) => router.push('/search?' + name)
+
+  return (
+    <div className='container mx-auto px-4 lg:px-2 pt-7'>
+      <h1 className='pb-6 font-bold text-2xl'>Rekomendasi Daerah Kantor </h1>
+      <div className='pl-10 sm:pl-0 md:pl-10 lg:pl-0'>
+        <Slider {...settings} className='pl-10 sm:pl-0 md:pl-5 lg:pl-0'>
+          {data?.map((item) => (
+            <CardCarousel
+              data={item}
+            />  
+          ))}
+        </Slider>
       </div>
-    )
+    </div>
+  )
 }
 

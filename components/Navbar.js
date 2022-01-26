@@ -124,7 +124,7 @@ export default function Navbar() {
                                     <Link href="/login">
                                         <a className="inline-block py-3 px-8 text-sm leading-normal font-normal" >LOGIN</a>
                                     </Link>
-                                    <Link href="/login">
+                                    <Link href="/register">
                                         <a className="inline-block py-2 px-5 text-sm text-white font-bold leading-normal bg-red-400 hover:bg-red-300 rounded-full transition duration-200" >SIGN UP</a>
                                     </Link>
                                 </div>
@@ -158,9 +158,7 @@ export default function Navbar() {
                                      <Link href="/livechat">
                                         <a className="block mb-2 py-3 text-sm text-center leading-normal rounded border font-medium" >Live Chat</a>
                                      </Link>
-                                     <button onClick={handleLogout}>
-                                        <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200" onClick={handleLogout}>Log Out</a>
-                                     </button>
+                                        <a className="block py-3 text-sm text-center text-white leading-normal rounded bg-red-400 hover:bg-red-300 font-medium transition duration-200 hover:cursor-pointer" onClick={handleLogout}>Log Out</a>
                                 </div>
                             ) : (
                                 <div className="pt-6">
