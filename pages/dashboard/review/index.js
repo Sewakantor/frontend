@@ -7,14 +7,15 @@ import Sidebar from '../../../components/Sidebar';
 import toRupiah from '@develoka/angka-rupiah-js';
 
 export default function index() {
-    const JWT = useSelector((state) => state.user.token);
-    const isLogin = useSelector((state) => state.user.isLogin);
-    const role = useSelector((state) => state.user.role);
-    if (!isLogin || role !== "admin") {
-        const router = useRouter();
+    // const JWT = useSelector((state) => state.user.token);
+    // const isLogin = useSelector((state) => state.user.isLogin);
+    // const role = useSelector((state) => state.user.role);
+    const router = useRouter();
+    const userData = useSelector((state) => state.user)
+
+    if (!userData.isLogin || role !== "admin") {
         router.push('/login');
     }
-
     const [dataComplex, setDataComplex] = useState();
     const [isLoading, setLoading] = useState(false);
 
@@ -24,7 +25,7 @@ export default function index() {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
-                'Authorization': `Bearer ${JWT}`,
+                'Authorization': `Bearer ${userData.token}`,
             }
         })
             .then((res) => res.json())
@@ -33,7 +34,6 @@ export default function index() {
                 setLoading(false)
             })
     }, [])
-    console.log(dataComplex)
     return (
         <div>
             <Sidebar>

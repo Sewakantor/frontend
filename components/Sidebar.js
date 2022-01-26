@@ -1,9 +1,35 @@
-import React from 'react'
 import LogoSVG from '../public/assets/images/main-logo-color.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2';
+import { logoutUser } from '../store/userSlice';
 
 export default function Sidebar({ children }) {
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    console.log("logout");
+    Swal.fire({
+        title: 'Are you sure want to logout?',
+        text: "You have to login again",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Logout'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+              'Logout success',
+              'You have to login again',
+              'success'
+          )
+          dispatch(logoutUser())
+        }
+      })  
+  }
   return (
     <div>
       <nav className="lg:hidden py-6 px-6 border-b">
@@ -40,7 +66,7 @@ export default function Sidebar({ children }) {
               <li>
                 <Link href="/dashboard" passHref>
                   <div
-                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 rounded"
+                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 hover:cursor-pointer rounded "
                   >
                     <span className="inline-block mr-3">
                     </span>
@@ -51,7 +77,7 @@ export default function Sidebar({ children }) {
               <li>
               <Link href="/dashboard/building" passHref>
                   <div
-                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 rounded"
+                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 hover:cursor-pointer rounded"
                   >
                     <span className="inline-block mr-3">
                     </span>
@@ -62,7 +88,7 @@ export default function Sidebar({ children }) {
               <li>
               <Link href="/dashboard/unit" passHref>
                   <div
-                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 rounded"
+                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 hover:cursor-pointer rounded"
                   >
                     <span className="inline-block mr-3">
                     </span>
@@ -78,7 +104,7 @@ export default function Sidebar({ children }) {
               <li>
               <Link href="/dashboard/review" passHref>
                   <div
-                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 rounded"
+                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 hover:cursor-pointer rounded"
                   >
                     <span className="inline-block mr-3">
                     </span>
@@ -94,7 +120,7 @@ export default function Sidebar({ children }) {
               <li>
               <Link href="/dashboard/livechat" passHref>
                   <div
-                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 rounded"
+                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 hover:cursor-pointer rounded"
                   >
                     <span className="inline-block mr-3">
                     </span>
@@ -110,7 +136,7 @@ export default function Sidebar({ children }) {
               <li>
               <Link href="/dashboard/reservation" passHref>
                   <div
-                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 rounded"
+                    className="flex items-center pl-3 py-3 pr-2 text-gray-900 hover:bg-indigo-50 hover:cursor-pointer rounded"
                   >
                     <span className="inline-block mr-3">
                     </span>
@@ -119,10 +145,10 @@ export default function Sidebar({ children }) {
                 </Link>
               </li>
             </ul>
-            <div className="pt-8">
+            <div className="pt-8 ">
               <a
-                className="flex items-center pl-3 py-3 pr-2 text-gray-500 hover:bg-indigo-50 rounded"
-                href="#"
+                className="flex items-center pl-3 py-3 pr-2 text-gray-500 hover:bg-indigo-50 rounded hover:cursor-pointer"
+                onClick={handleLogout}
               >
                 <span className="inline-block mr-4">
                   <svg
