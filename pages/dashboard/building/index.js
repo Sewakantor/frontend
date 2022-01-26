@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import FormLogin from '../../components/FormLogin'
-import { useJwt } from "react-jwt";
-import Sidebar from '../../components/Sidebar';
+import Image from 'next/image'
+import Sidebar from '../../../components/Sidebar';
+import toRupiah from '@develoka/angka-rupiah-js';
 
 export default function index() {
     const JWT = useSelector((state) => state.user.token);
@@ -20,7 +20,7 @@ export default function index() {
 
     useEffect(async () => {
         setLoading(true)
-        await fetch('http://13.229.240.1:8080/property/complex', {
+        await fetch('http://13.229.240.1:8080/property/building', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -43,7 +43,7 @@ export default function index() {
                             <div className="flex flex-wrap mb-8 justify-between items-center">
                                 <div className="w-full md:w-auto mb-10 md:mb-0">
                                     <h3 className="text-3xl font-heading font-medium leading-10">
-                                        Complex
+                                        Building
                                     </h3>
                                 </div>
                                 <div className="w-full md:w-auto">
@@ -66,29 +66,28 @@ export default function index() {
                                                     Name
                                                 </th>
                                                 <th className="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
-                                                    State - Postal Code
-                                                </th>
-                                                <th className="pb-8 text-sm text-body text-right text-opacity-40 font-heading font-semibold uppercase">
-                                                    City
+                                                    Floor
                                                 </th>
                                                 <th className="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
-                                                    Country
+                                                    Floor Surface
+                                                </th>
+                                                <th className="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
+                                                    Total Surface
+                                                </th>
+                                                <th className="pb-8 text-sm text-body text-center text-opacity-40 font-heading font-semibold uppercase">
+                                                    Price
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {dataComplex !== undefined ? dataComplex?.map((data) => (
                                                 <tr>
-                                                    <td className="p-0">
-                                                        <div className="flex items-center pl-8 pr-4 h-20 bg-blueGray-50 border-l border-t border-b border-gray-100 rounded-tl-5xl rounded-bl-5xl">
-                                                            <div className="flex items-center">
-                                                                <div className="flex-shrink-0">
-                                                                    <h4 className="font-heading font-medium leading-4">
-                                                                        {data.Name}
-                                                                    </h4>
-                                                                    <span className="text-sm text-darkBlueGray-400 leading-3">
-                                                                        {data.Street.substring(0, 30)}....
-                                                                    </span>
+                                                    <td class="p-0">
+                                                        <div class="flex items-center pl-8 pr-4 h-20 bg-blueGray-50 border-l border-t border-b border-gray-100 rounded-tl-5xl rounded-bl-5xl">
+                                                            <div class="flex items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <h4 class="font-heading font-medium leading-4">{data.Name}</h4>
+                                                                    <span class="text-sm text-darkBlueGray-400 leading-3">{data.Year}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -96,20 +95,25 @@ export default function index() {
                                                     <td className="p-0">
                                                         <div className="flex items-center justify-center p-5 h-20 text-center bg-blueGray-50 border-t border-b border-gray-100">
                                                             <span className="font-heading text-darkBlueGray-400">
-                                                            {data.State} - {data.PostalCode}
+                                                                {data.Floor}
                                                             </span>
                                                         </div>
                                                     </td>
                                                     <td className="p-0">
                                                         <div className="flex items-center justify-center p-5 h-20 text-center bg-blueGray-50 border-t border-b border-gray-100">
                                                             <span className="font-heading text-darkBlueGray-400">
-                                                                {data.City}
+                                                                {data.FloorSurface} m²
                                                             </span>
                                                         </div>
                                                     </td>
                                                     <td className="p-0">
                                                         <div className="flex items-center justify-center p-5 h-20 text-center bg-blueGray-50 border-t border-b border-gray-100">
-                                                            {data.Country}
+                                                            {data.TotalSurface} m²
+                                                        </div>
+                                                    </td>
+                                                    <td className="p-0">
+                                                        <div className="flex items-center justify-center p-5 h-20 text-center bg-blueGray-50 border-t border-b border-gray-100">
+                                                            {toRupiah(data.Price)} 
                                                         </div>
                                                     </td>
                                                 </tr>
