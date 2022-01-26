@@ -2,7 +2,7 @@ import React from 'react';
 import toRupiah from '@develoka/angka-rupiah-js';
 
 export default function TableHistory({data}) {
-    console.log(data);
+    
     const convertDate = (data) => {
         let date = new Date(data);
         let year = date.getFullYear();
