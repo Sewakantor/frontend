@@ -42,7 +42,7 @@ export default function index() {
                         <div className="pt-14 px-8 pb-12 bg-white rounded-5xl">
                             <div className="flex flex-wrap mb-8 justify-between items-center">
                                 <div className="w-full md:w-auto mb-10 md:mb-0">
-                                    <h3 className="text-3xl font-heading font-medium leading-10">
+                                    <h3 className="text-3xl font-heading font-medium leading-10"z>
                                         Complex
                                     </h3>
                                 </div>
@@ -50,7 +50,7 @@ export default function index() {
                                     <div className="inline-block w-full md:w-auto p-1 border border-blue-500 rounded-xl">
                                         <a
                                             className="inline-block py-3 px-8 w-full md:w-auto leading-5 text-darkBlueGray-400 font-semibold tracking-tighter font-heading text-center bg-purple-50 hover:text-darkBlueGray-500 focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 rounded-xl"
-                                            href="#"
+                                            href="dashboard/complex/new"
                                         >
                                             Add New
                                         </a>
