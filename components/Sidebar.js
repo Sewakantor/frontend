@@ -54,7 +54,7 @@ export default function Sidebar({ children }) {
         <div className="navbar-backdrop fixed lg:hidden inset-0 bg-gray-800 opacity-10" />
         <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-3/4 lg:w-80 sm:max-w-xs pt-6 pb-8 bg-white border-r overflow-y-auto">
           <div className="flex w-full items-center px-6 pb-6 mb-6 lg:border-b border-blue-50">
-            <a className="text-xl font-semibold" href="#">
+            <a className="text-xl font-semibold" href="/">
               <Image className="h-7" src={LogoSVG} alt="" width={120} height={30} />
             </a>
           </div>

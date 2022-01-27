@@ -9,7 +9,7 @@ import toRupiah from '@develoka/angka-rupiah-js';
 export default function index() {
     // const JWT = useSelector((state) => state.user.token);
     // const isLogin = useSelector((state) => state.user.isLogin);
-    // const role = useSelector((state) => state.user.role);
+    const role = useSelector((state) => state.user.role);
     const router = useRouter();
     const userData = useSelector((state) => state.user)
 

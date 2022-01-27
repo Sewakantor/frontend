@@ -4,6 +4,7 @@ import ListCardOffice from '../components/ListCardOffice'
 import Testimoni from '../components/Testimoni'
 import Client from '../components/Client'
 import Footer from '../components/Footer'
+import Head from 'next/head'
 
 export async function getServerSideProps() {
 
@@ -25,6 +26,10 @@ export default function Home({carousel, list}) {
   console.log(carouselData);
   return (
     <>
+      <Head>
+          <title>Sewakantor</title>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Navbar/>
       <Carousels data={carouselData}/>
       <div className='container mx-auto px-4 lg:px-2'>

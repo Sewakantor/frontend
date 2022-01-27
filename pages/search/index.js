@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 import Footer from '../../components/Footer';
@@ -24,6 +25,10 @@ export default function index( {data} ) {
 
     return(
         <>
+             <Head>
+                <title>Search : {complex_name}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Navbar/>
             <div className='container mx-auto px-4 z-10'>
                 <h1 className='pt-8 text-left font-semibold text-2xl'>Search : <a className='font-bold italic'>{complex_name}</a></h1>

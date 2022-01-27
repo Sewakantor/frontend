@@ -36,6 +36,10 @@ export default function index() {
     console.log(dataComplex)
     return (
         <div>
+             <Head>
+                <title>Dashboard</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Sidebar>
                 <section className="py-8 bg-blueGray-50">
                     <div className="container px-4 mx-auto">

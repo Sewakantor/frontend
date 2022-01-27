@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Link from "next/link"
 import BuildingDetailOnReview from "../../components/BuildingDetailOnReview"
 import CardReview from "../../components/CardReview"
@@ -26,6 +27,10 @@ export default function index({info, review}) {
 
 	return (
 		<>
+		    <Head>
+                <title>Review {infoData.Name}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
 			<Navbar/>
 			<div className="container mx-auto px-4 lg:px-2">
 				<h1 className="pt-5 pb-5 text-2xl font-bold">Review Kantor</h1>

@@ -36,6 +36,10 @@ export default function index() {
     console.log(dataComplex)
     return (
         <div>
+            <Head>
+                <title>Building</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Sidebar>
                 <section className="py-8 bg-blueGray-50">
                     <div className="container px-4 mx-auto">
@@ -50,7 +54,7 @@ export default function index() {
                                     <div className="inline-block w-full md:w-auto p-1 border border-blue-500 rounded-xl">
                                         <a
                                             className="inline-block py-3 px-8 w-full md:w-auto leading-5 text-darkBlueGray-400 font-semibold tracking-tighter font-heading text-center bg-purple-50 hover:text-darkBlueGray-500 focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 rounded-xl"
-                                            href="#"
+                                            href="building/new"
                                         >
                                             Add New
                                         </a>

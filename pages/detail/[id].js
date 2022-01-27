@@ -11,6 +11,7 @@ import Footer from '../../components/Footer'
 import axios from 'axios'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
+import Head from 'next/head'
 
 
 export async function getServerSideProps(context) {
@@ -45,6 +46,10 @@ export default function index({info,review,recommend}) {
     
     return (
         <div>
+             <Head>
+                <title>{infoData.Name}</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Navbar/>
             <div className="pt-14 container mx-auto px-4 sm:px-2 mb-10">
                 <HeaderOnDetail data={infoData}/>

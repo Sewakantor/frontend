@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import TableHistory from '../../components/TableHistory';
+import Head from 'next/head';
 
 
 export default function index({}) {
@@ -35,6 +36,10 @@ export default function index({}) {
 
     return (
         <div>
+            <Head>
+                <title>History</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
             <Navbar/>
             <section className="py-8 bg-blueGray-50">
               <div className="container px-4 mx-auto">
