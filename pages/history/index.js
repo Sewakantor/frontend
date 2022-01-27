@@ -31,7 +31,7 @@ export default function index({}) {
         if (!userData.isLogin) {
           router.push('/login');
       }
-    }, [])
+    }, [userData.isLogin])
 
     return (
         <div>

@@ -20,6 +20,7 @@ export default function Navbar() {
     })
     
     const [isOpen, setIsOpen] = useState(false);
+    const userRole = useSelector((state) => state.user.role)
     const loginStatus = useSelector((state) => state.user.isLogin);
     const nameUser = useSelector((state) => state.user.name)
     const dispatch = useDispatch();
@@ -80,7 +81,7 @@ export default function Navbar() {
                                             <a className='text-sm font-medium'>{nameUser}</a>
                                         </div>
                                         <div className="col-span-2">
-                                            <a className='text-sm'>Customer</a>
+                                            <a className='text-sm'>{userRole}</a>
                                         </div>
                                         <div className="row-span-2 col-span-2 px-3 mt-2 z-10">
                                              <Popover className="relative">
